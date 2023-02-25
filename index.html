@@ -17,7 +17,7 @@
         // Função converter imagem para base64
         function converterImagem() {
 
-            // Receber o arquivo do formulario
+            // Receber o arquivo do formulário
             var receberArquivo = document.getElementById("imagem-usuario").files;
             //console.log(receberArquivo);
 
@@ -31,13 +31,12 @@
                 // FileReader - permite ler o conteúdo do arquivo do computador do usuário
                 var lerArquivo = new FileReader();
 
-                // O evento onload ocorre quando um objeto he carregado
+                // O evento onload ocorre quando um objeto é carregado
                 lerArquivo.onload = function(arquivoCarregado) {
                     // Converter a imagem para base64
                     var imagemBase64 = arquivoCarregado.target.result; 
                     //console.log(imagemBase64);
 
-                    //**** INICIO ENVIAR IMAGEM PARA O HTML *****/
                     // Cria o elemento HTML
                     var novaImagem = document.createElement('img');
 
@@ -52,7 +51,7 @@
                     console.log(document.getElementById("apresentar-imagem").innerHTML);
                 }
 
-                // O metodo readAsDataURL e usado para ler o conteudo
+                // O metodo readAsDataURL é usado para ler o conteudo
                 lerArquivo.readAsDataURL(carregarImagem);
             }
         }
