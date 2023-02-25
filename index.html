@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Gerar Imagem Base64</title>
+</head>
+<body>
+    <h1>Converter a imagem para Base64</h1>
+
+    <!-- Criar o campo para usuário selecionar a imagem -->
+    <input type="file" id="imagem-usuario" onchange="converterImagem();" />
+
+    <!-- Receber e apresentar a imagem para o usuario após converte para Base64 -->
+    <div id="apresentar-imagem" ></div>
+
+    <script>
+        // Função converter imagem para base64
+        function converterImagem() {
+
+            // Receber o arquivo do formulario
+            var receberArquivo = document.getElementById("imagem-usuario").files;
+            //console.log(receberArquivo);
+
+            // Verificar se existe o arquivo
+            if (receberArquivo.length > 0) {
+
+                // Carregar a imagem
+                var carregarImagem = receberArquivo[0];
+                //console.log(carregarImagem);
+
+                // FileReader - permite ler o conteúdo do arquivo do computador do usuário
+                var lerArquivo = new FileReader();
+
+                // O evento onload ocorre quando um objeto he carregado
+                lerArquivo.onload = function(arquivoCarregado) {
+                    // Converter a imagem para base64
+                    var imagemBase64 = arquivoCarregado.target.result; 
+                    //console.log(imagemBase64);
+
+                    //**** INICIO ENVIAR IMAGEM PARA O HTML *****/
+                    // Cria o elemento HTML
+                    var novaImagem = document.createElement('img');
+
+                    // Atribuir a imagem para o atributo src
+                    novaImagem.src = imagemBase64;
+                    //**** FIM ENVIAR IMAGEM PARA O HTML *****/
+
+                    // Enviar imagem para o HTML
+                    document.getElementById("apresentar-imagem").innerHTML = novaImagem.outerHTML;
+
+                    // Recuperar a imagem base64 do HTML
+                    console.log(document.getElementById("apresentar-imagem").innerHTML);
+                }
+
+                // O metodo readAsDataURL e usado para ler o conteudo
+                lerArquivo.readAsDataURL(carregarImagem);
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!-- By: Anjo -->
